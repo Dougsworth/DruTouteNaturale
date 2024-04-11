@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
       correctAnswer: "Leave-in Conditioner",
     },
   ];
-
   let currentQuestionIndex = 0;
+  const selectedAnswers = new Array(quizQuestions.length); // Stores selected answers
   const questionElement = document.querySelector(".question");
   const answerOptionsElement = document.querySelector(".answerOptions");
   const nextButton = document.getElementById("next");
@@ -41,26 +41,33 @@ document.addEventListener("DOMContentLoaded", function () {
     questionElement.textContent = currentQuestion.question;
     answerOptionsElement.innerHTML = "";
 
-    currentQuestion.answers.forEach((answer) => {
+    currentQuestion.answers.forEach((answer, index) => {
       let option = document.createElement("button");
       option.textContent = answer;
       option.classList.add("option");
-      option.addEventListener("click", () => selectAnswer(answer, option));
+      option.addEventListener("click", () => selectAnswer(answer, index));
       answerOptionsElement.appendChild(option);
+      if (selectedAnswers[currentQuestionIndex] === answer) {
+        option.classList.add("selected"); // Visually indicate this was the selected answer
+      }
     });
 
     nextButton.classList.add("hidden");
     if (currentQuestionIndex === quizQuestions.length - 1) {
       submitButton.classList.remove("hidden");
+    } else {
+      submitButton.classList.add("hidden");
     }
     updateProgressBar();
   }
 
-  function selectAnswer(answer, option) {
-    document
-      .querySelectorAll(".option")
-      .forEach((btn) => (btn.disabled = true));
-    option.disabled = false; // highlight selected option
+  function selectAnswer(answer, answerIndex) {
+    selectedAnswers[currentQuestionIndex] = answer; // Store selected answer
+    document.querySelectorAll(".option").forEach((btn) => {
+      btn.classList.remove("selected"); // Remove the selected class from all buttons
+      btn.disabled = false; // Enable all options
+    });
+    answerOptionsElement.children[answerIndex].classList.add("selected"); // Visually mark as selected
     nextButton.classList.remove("hidden");
   }
 
@@ -76,12 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     showResults();
   });
 
-  const replayButton = document.querySelector(".replay");
-  replayButton.addEventListener("click", function () {
-    // Reload the page to restart the quiz
-    window.location.reload();
-  });
-
   function updateProgressBar() {
     const progressPercent =
       ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
@@ -89,29 +90,69 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function calculateResults() {
-    // Example logic to calculate results
-    // This should be replaced or expanded based on your actual result calculation needs
-    let resultText = "You have mixed hair type"; // Example result
-    // Display the results in the result box
-    document.querySelector(
-      ".resultBox h1"
-    ).textContent = `Your hair type is likely: ${resultText}`;
+    let hairType =
+      selectedAnswers.find((answer) =>
+        ["Curly", "Straight", "Wavy", "Coily"].includes(answer)
+      ) || "";
+    const recommendations = {
+      Curly: {
+        product: "Leave-in conditioner",
+        careRoutine:
+          "Use a hydrating shampoo and conditioner, followed by a leave-in conditioner to define curls.",
+        additionalInfo:
+          "Consider using a wide-tooth comb or fingers to detangle wet hair to prevent breakage.",
+      },
+      Straight: {
+        product: "Lightweight serum",
+        careRoutine:
+          "Use a volumizing shampoo and conditioner, followed by a lightweight serum to add shine.",
+        additionalInfo: "Avoid heavy products that may weigh down your hair.",
+      },
+      Wavy: {
+        product: "Sea salt spray",
+        careRoutine:
+          "Use a moisturizing shampoo and conditioner, followed by a sea salt spray to enhance waves.",
+        additionalInfo:
+          "Scrunch your hair while applying products to enhance wave definition.",
+      },
+      Coily: {
+        product: "Curl defining cream",
+        careRoutine:
+          "Use a sulfate-free shampoo and conditioner, followed by a curl defining cream to moisturize and define coils.",
+        additionalInfo:
+          "Deep condition regularly to keep coils hydrated and prevent breakage.",
+      },
+    };
+
+    let resultText = hairType
+      ? `<div class="recommendationBox">
+            <h1>You have ${hairType.toLowerCase()} hair type.</h1>
+            <h2>Here's what we recommend:</h2>
+            <ul>
+                <li><strong>Product:</strong> ${
+                  recommendations[hairType].product
+                }</li>
+                <li><strong>Hair Care Routine:</strong> ${
+                  recommendations[hairType].careRoutine
+                }</li>
+                <li><strong>Additional Info:</strong> ${
+                  recommendations[hairType].additionalInfo
+                }</li>
+            </ul>
+         </div>`
+      : "Based on your answers, we recommend consulting a professional hair stylist for personalized advice.";
+
+    document.querySelector(".resultBox").innerHTML = resultText; // Make sure to target the correct element
   }
-  submitButton.addEventListener("click", function () {
-    calculateResults();
-    showResults();
-    console.log("submit button clicked");
+
+  document.querySelector(".replay").addEventListener("click", function () {
+    // Reload the current page
+    window.location.reload();
   });
-
   function showResults() {
-    const resultElement = document.querySelector(".resultArea");
-    const quizElement = document.querySelector(".multipleChoiceQues");
-
-    // Hide the quiz questions
-    quizElement.style.display = "none";
-
-    // Show the results
-    resultElement.style.display = "block";
+    multipleChoiceQues.style.display = "none";
+    resultArea.style.display = "block";
   }
+
   displayQuestion();
 });
