@@ -1675,3 +1675,112 @@ button:hover {
 .hidden {
   display: none;
 }
+
+/* photo gallery */
+.photo-gallery {
+  margin-top: 30px; /* Adds space above the gallery */
+  margin-bottom: 30px; /* Adds space below the gallery */
+}
+
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  height: 300px; /* Set a fixed height for all images */
+  margin-bottom: 15px; /* Adds space between rows */
+}
+
+.img-fluid {
+  width: 100%; /* Ensure width is always 100% */
+  height: 100%; /* Match the height of the parent */
+  object-fit: cover; /* Ensure the image covers the space without distorting aspect ratio */
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Darker background for better readability */
+  color: #fff;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.5s ease;
+  transform: translateY(100%);
+  text-align: center; /* Center-align the text */
+}
+
+.photo-item:hover .photo-overlay {
+  transform: translateY(0);
+}
+
+/*our story book */
+
+.container .book {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  margin: 5% auto;
+  perspective: 1500px;
+}
+
+.container .page {
+  width: 49%;
+  height: 98%;
+  padding: 20px;
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  transform-origin: left center;
+  background-color: blanchedalmond;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.15) 0%,
+    transparent 10%
+  );
+  transition: transform 0.5s;
+  transform: rotateY(-180deg);
+  backface-visibility: hidden;
+}
+
+.container .page:nth-of-type(2n) {
+  left: 1px;
+  background-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.12) 0%,
+    transparent 10%
+  );
+  transform-origin: right center;
+  transform: rotateY(0);
+}
+
+.container .page.cover {
+  width: 50%;
+  height: 100%;
+  top: 0;
+  background-color: maroon;
+  color: #ec5757;
+  text-align: center;
+  text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.container input[type="radio"] {
+  display: none;
+}
+
+.container input[type="radio"]:checked ~ .page {
+  transform: rotateY(0);
+}
+
+.container input[type="radio"]:checked ~ .page:nth-of-type(2n) {
+  transform: rotateY(180deg);
+}
+
+.container .book h1,
+.container .book h2 {
+  margin-top: 50%;
+  font-size: 2.5rem;
+}
+
+.container .book p {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+}
