@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Toute Naturale </title>
+    <title>Toute Naturale</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -60,32 +60,9 @@
                 role="navigation"
               >
                 <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-                  <li class="has-children">
-                    <a href="index.html">Home</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Menu One</a></li>
-                      <li><a href="#">Menu Two</a></li>
-                      <li><a href="#">Menu Three</a></li>
-                      <li class="has-children">
-                        <a href="#">Sub Menu</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Menu One</a></li>
-                          <li><a href="#">Menu Two</a></li>
-                          <li><a href="#">Menu Three</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="has-children active">
-                    <a href="hairquiz.html">hairquiz</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Menu One</a></li>
-                      <li><a href="#">Menu Two</a></li>
-                      <li><a href="#">Menu Three</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="index.html">Home</a></li>
+                  <li class="active"><a href="hairquiz.html">hairquiz</a></li>
                   <li><a href="Hairstyles.html">Hairstyles</a></li>
-
                   <li><a href="about.html">About</a></li>
                   <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -158,39 +135,128 @@
           </div>
         </div>
       </div>
-   
+
       <div class="quizArea">
         <div class="multipleChoiceQues">
-            <h1 class="mc_quiz">Discover Your Hair Type</h1>
-            <div class="my-progress">
-                <div class="my-progress-bar" style="width: 0%;"></div> <!-- Progress bar will update based on the script -->
-            </div>
-            <div class="quizBox">
-                <div class="question"></div>
-                <ul class="answerOptions"></ul> <!-- Options are dynamically added here -->
-            </div>
-            <div class="buttonArea">
-                <button id="next" class="hidden">Next</button>
-                <button id="submit" class="hidden">Submit</button>
-            </div>
+          <h1 class="mc_quiz">Discover Your Hair Type</h1>
+          <div class="my-progress">
+            <div class="my-progress-bar" style="width: 0%"></div>
+            <!-- Progress bar will update based on the script -->
+          </div>
+          <div class="quizBox">
+            <div class="question"></div>
+            <ul class="answerOptions"></ul>
+            <!-- Options are dynamically added here -->
+          </div>
+          <div class="buttonArea">
+            <button id="next" class="hidden">Next</button>
+            <button id="submit" class="hidden">Submit</button>
+          </div>
         </div>
-        <div class="resultArea hidden">  
-            <div class="resultPage1">
-                <div class="resultBox">
-                    <h1>Result Summary</h1>
-                </div>
-                <div class="briefchart">
-                    <!-- Chart and results will be dynamically inserted here -->
-                </div>
-                <div class="resultBtns">
-                    <button class="replay">Replay</button>
-                </div>
+        <div class="resultArea hidden">
+          <div class="resultPage1">
+            <div class="resultBox">
+              <h1>Result Summary</h1>
             </div>
+            <div class="briefchart">
+              <!-- Chart and results will be dynamically inserted here -->
+            </div>
+            <div class="resultBtns">
+              <button class="replay">Replay</button>
+            </div>
+          </div>
         </div>
-    </div>
-    
-    
-    
+      </div>
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="mb-5">
+                <h3 class="footer-heading mb-4">About Toute Naturale</h3>
+                <p>
+                  At Toute Naturale, we believe in celebrating and preserving
+                  the inherent beauty of the natural world. Our products and
+                  services are designed to nurture your body and soul, using
+                  only the finest organic and sustainably-sourced ingredients.
+                  Experience the purity of nature with every visit.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+              <div class="row mb-5">
+                <div class="col-md-12">
+                  <h3 class="footer-heading mb-4">Quick Menu</h3>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                  <ul class="list-unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Barbers</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Team</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                  <ul class="list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Membership</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-5 mb-lg-0">
+              <div class="mb-5">
+                <h3 class="footer-heading mb-2">Subscribe Newsletter</h3>
+                <p>
+                  Join our community to receive updates on our latest
+                  innovations and exclusive access to tips on achieving a
+                  natural and sustainable lifestyle. Stay connected with Toute
+                  Naturale.
+                </p>
+
+                <form action="#" method="post">
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control border-secondary text-white bg-transparent"
+                      placeholder="Enter Email"
+                      aria-label="Enter Email"
+                      aria-describedby="button-addon2"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-primary text-white"
+                        type="button"
+                        id="button-addon2"
+                      >
+                        Send
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+              <div class="mb-5">
+                <a href="#" class="pl-0 pr-3"
+                  ><span class="icon-facebook"></span
+                ></a>
+                <a href="#" class="pl-3 pr-3"
+                  ><span class="icon-twitter"></span
+                ></a>
+                <a href="#" class="pl-3 pr-3"
+                  ><span class="icon-instagram"></span
+                ></a>
+                <a href="#" class="pl-3 pr-3"
+                  ><span class="icon-linkedin"></span
+                ></a>
+              </div>
+
               <p>
                 Copyright &copy;
                 <script
@@ -201,7 +267,7 @@
                   document.write(new Date().getFullYear());
                 </script>
                 <i class="icon-heart-o" aria-hidden="true"></i> by
-                <a href="https://me.com" target="_blank">Me</a>
+                <a href="https://me.com" target="_blank">me</a>
               </p>
             </div>
           </div>
@@ -221,7 +287,6 @@
     <script src="js/bootstrap-datepicker.min.js"></script>
     <script src="js/aos.js"></script>
     <script src="js/quizScript.js"></script>
-
 
     <script src="js/main.js"></script>
   </body>
